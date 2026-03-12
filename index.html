@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan OOP Dart</title>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #f1f5f9, #dbeafe);
+      line-height: 1.6;
+      color: #1e293b;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin-top: 40px;
+      border-left: 5px solid #2563eb;
+      padding-left: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      transition: 0.3s;
+      margin-bottom: 20px;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      border-radius: 10px;
+      margin-top: 15px;
+    }
+
+    hr {
+      margin: 50px 0;
+      border: none;
+      height: 1px;
+      background: #cbd5e1;
+    }
+
+    footer {
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid #cbd5e1;
+      font-size: 14px;
+      text-align: center;
+      color: #475569;
+    }
+
+    /* BUTTON */
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 18px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #1e40af;
+    }
+
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-content {
+      position: relative;
+      background: white;
+      width: 90%;
+      max-width: 900px;
+      margin: 5% auto;
+      padding: 20px;
+      border-radius: 12px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      border-radius: 10px;
+    }
+
+    .close {
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      font-size: 22px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .close:hover {
+      color: #2563eb;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    pre {
+      background: #f8fafc;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid #e2e8f0;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>Review Sesi 1</h1>
+    <p><b>Nama:</b> Azriel Miracle Yuandre</p>
+    <p><b>NIM:</b> 251410024</p>
+    <p><b>Kelas:</b> SI2A</p>
+
+    <div class="card">
+      <p>
+        Mengingat kembali pilar dasar pemrograman berorientasi objek dalam bahasa Dart sebelum masuk ke topik utama:
+      </p>
+      <ul>
+        <li><b>OOP:</b> Paradigma yang berfokus pada objek sebagai unit utama.</li>
+        <li><b>Class:</b> Blueprint atau cetakan protokol untuk membuat objek.</li>
+        <li><b>Object:</b> Manifestasi runtime atau instance nyata dari sebuah class.</li>
+        <li><b>Constructor:</b> Method khusus yang digunakan untuk inisialisasi objek.</li>
+      </ul>
+
+      <pre>
+// Nama: Azriel Miracle Yuandre
+// Nim: 251410024
+// Kelas: SI2A
+
+class Buku {
+  String judul;
+  Buku(this.judul);
+}
+
+void main() {
+  var buku1 = Buku('Belajar Dart OOP jilid 1 Bersama Babe');
+  print('Judul Buku: ${buku1.judul}');
+}
+  </pre>
+
+      <button class="btn" onclick="openModal('11dc282384908ce64180992dafa3c188')">
+        Lihat Kode
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>JENIS-JENIS CONSTRUCTOR</h3>
+      <p>Dart menyediakan beberapa mekanisme inisialisasi objek untuk berbagai kebutuhan arsitektur:</p>
+      <ol>
+        <li><b>Default Constructor:</b> ClassName()</li>
+        <li><b>Named Constructor:</b> ClassName.name()</li>
+        <li><b>Parameterized Constructor:</b> ClassName(this.param)</li>
+        <li><b>Constant Constructor:</b> const ClassName()</li>
+        <li><b>Factory Constructor:</b> (Akan dibahas pada sesi lanjut)</li>
+      </ol>
+    </div>
+
+    <h2>2. NAMED CONSTRUCTOR - CONTOH DETAIL</h2>
+    <div class="card">
+      <p>
+        Dart memungkinkan pembuatan lebih dari satu konstruktor dalam satu kelas menggunakan Named Constructor. Ini
+        sangat berguna untuk memberikan cara alternatif dalam menginisialisasi objek, seperti dari data JSON.
+      </p>
+
+      <pre>
+// Nama   : Azriel Miracle Yuandre
+// Nim    : 251410024
+// Kelas  : Si2A
+import 'dart:convert';
+
+class Mobil {
+  String? merk;
+  int? tahun;
+
+  // Parameterized constructor
+  Mobil(this.merk, this.tahun);
+
+  // Named constructor
+  Mobil.baru() {
+    merk = 'Bmw';
+    tahun = 2023;
+  }
+
+  // Named constructor dengan parameter
+  Mobil.dariJson(Map<String, dynamic> json) {
+    merk = json['merk'];
+    tahun = json['tahun'];
+  }
+
+  // Override toString for better print output
+  @override
+  String toString() {
+    return 'Mobil{merk: $merk, tahun: $tahun}';
+  }
+}
+
+void main() {
+  print('--- PRAKTIKUM KELAS MOBIL ---');
+
+  // 1. Constructor default
+  var m1 = Mobil('Ferrari', 2022);
+  print('Mobil 1 (constructor default): $m1');
+
+  // 2. Named constructor .baru
+  var m2 = Mobil.baru();
+  print('Mobil 2 (named constructor .baru): $m2');
+
+  // 3. Named constructor .dariJson
+  String dataJson = '{"merk": "Lamborghini", "tahun": 2023}';
+  Map<String, dynamic> jsonData = jsonDecode(dataJson);
+  var m3 = Mobil.dariJson(jsonData);
+  print('Mobil 3 (named constructor .dariJson): $m3');
+
+  // 4. Contoh lain dengan .dariJson
+  Map<String, dynamic> dataLain = {'merk': 'Porsche', 'tahun': 2024};
+  var m4 = Mobil.dariJson(dataLain);
+  print('Mobil 4 (named constructor .dariJson): $m4');
+
+  print('\n--- SELESAI DEMONSTRASI ---');
+}
+  </pre>
+
+      <button class="btn" onclick="openModal('c94aa90f8dfbd6d807be9c2772d504d2')">
+        Lihat Kode
+      </button>
+    </div>
+
+    <h2>3. Constant Constructor</h2>
+    <div class="card">
+      <p>
+        Konstruktor konstan digunakan untuk membuat objek yang immutable (tidak bisa diubah). Objek yang dibuat dengan
+        const dan nilai yang sama akan menggunakan instance yang sama di memori, sehingga lebih efisien.
+      </p>
+
+      <pre>
+// Nama   : Azriel Miracle Yuandre
+// Nim    : 251410024
+// Kelas  : Si2A
+
+class Warna {
+  final int r, g, b;
+  const Warna(this.r, this.g, this.b);
+
+  @override
+  String toString() {
+    return 'Warna(r: $r, g: $g, b: $b)';
+  }
+}
+
+void main() {
+  const scarlet = Warna(255, 0, 0);
+  const scarletLagi = Warna(254, 0, 0); 
+
+  print(scarlet);
+  print(scarletLagi); 
+  print('Apakah instance sama? ${identical(scarlet, scarletLagi)}'); 
+}
+  </pre>
+
+      <button class="btn" onclick="openModal('d4d3e01d810cb35552170bf7317bd3ee')">
+        Lihat Kode
+      </button>
+    </div>
+
+    <h2>4. CONSTRUCTOR DENGAN INITIALIZER LIST</h2>
+    <div class="card">
+      <p>
+        Initializer List digunakan untuk menginisialisasi field sebelum body konstruktor dijalankan. Ini sering
+        digunakan untuk melakukan validasi atau transformasi data pada field final.
+      </p>
+
+      <pre>
+// Nama   : Azriel Miracle Yuandre
+// Nim    : 251410024
+// Kelas  : Si2A
+
+class Titik {
+  final double x, y;
+
+  Titik(double x, double y)
+    : x = x.abs(),
+      y = y.abs() {
+    print('Titik dibuat di (${this.x}, ${this.y})');
+  }
+}
+
+void main(){
+  print('Membuat objek Titik pertama:');
+  var t1 = Titik(7.5, 2.0); 
+  print('Titik 1: x = ${t1.x}, y = ${t1.y}');
+
+  print('\nMembuat objek Titik kedua dengan nilai negatif:');
+  var t2 = Titik(-8.0, 3.5); 
+  print('Titik 2: x = ${t2.x}, y = ${t2.y}');
+
+  print('\nMembuat objek Titik ketiga dengan nilai negatif di kedua koordinat:');
+  var t3 = Titik(-2.0, -4.0); 
+  print('Titik 3: x = ${t3.x}, y = ${t3.y}');
+}
+  </pre>
+
+      <button class="btn" onclick="openModal('fab6c5b75398c9d1315b8877725646cb')">
+        Lihat Kode
+      </button>
+    </div>
+
+    <h2>5. PRAKTIK 1 - MULTIPLE CONSTRUCTOR</h2>
+    <div class="card">
+      <p>
+        Latihan pembuatan kelas Mahasiswa dengan tiga jenis konstruktor berbeda untuk fleksibilitas instansiasi objek
+        sesuai kebutuhan data:
+      </p>
+
+      <pre>
+// Nama   : Azriel Miracle Yuandre
+// Nim    : 251410024
+// Kelas  : Si2A
+
+class Mahasiswa {
+  String? nama;
+  String? nim;
+
+  Mahasiswa(this.nama, this.nim);
+
+  Mahasiswa.dariMap(Map<String, String> data) {
+    nama = data['nama'];
+    nim = data['nim'];
+  }
+
+  Mahasiswa.tanpaNama() {
+    nama = 'No Namenor';
+    nim = '000001';
+  }
+
+  void info() => print('Mahasiswa: $nama, NIM: $nim');
+}
+
+void main() {
+  var m1 = Mahasiswa('Azriel', '251410024'); 
+  var m2 = Mahasiswa.dariMap({'nama': 'Miracle', 'nim': '251410010'}); 
+  var m3 = Mahasiswa.tanpaNama(); 
+
+  m1.info(); 
+  m2.info(); 
+  m3.info(); 
+}
+  </pre>
+
+      <button class="btn" onclick="openModal('62dba7174bae5127cc47547a6984032c')">
+        Lihat Kode
+      </button>
+    </div>
+
+    <h2>PENGANTAR ENKAPSULASI</h2>
+    <div class="card">
+      <h3>Konsep Enkapsulasi</h3>
+      <p><b>Konsep:</b> Menyembunyikan detail implementasi dari luar.</p>
+      <p><b>Tujuan:</b></p>
+      <ul>
+        <li>Keamanan data</li>
+        <li>Kontrol akses</li>
+        <li>Fleksibilitas perubahan</li>
+      </ul>
+      <p><b>Cara di Dart:</b> Menggunakan underscore (_) untuk private members.</p>
+      <p><b>Public:</b> Dapat diakses dari mana saja (default).</p>
+      <p><b>Private:</b> Hanya dapat diakses dalam file yang sama.</p>
+
+      <pre>
+// Nama   : Azriel Miracle Yuandre
+// Nim    : 251410024
+// Kelas  : Si2A 
+
+class Person {
+  String _nama; 
+  int umur;      
+
+  Person(this._nama, this.umur); 
+
+  void info() => print('Nama: $_nama, Umur: $umur'); 
+}
+
+void main() {
+  var p1 = Person('Azriel Miracle Yuandre', 20); 
+  p1.info(); 
+}
+  </pre>
+
+      <button class="btn" onclick="openModal('46fa1b5e7e941dcc6a3917bb923ea8bb')">
+        Lihat Kode
+      </button>
+    </div>
+
+    <h2>Getter And Setter</h2>
+    <div class="card">
+      <h3>Pengertian Getter dan Setter</h3>
+      <p><b>Getter:</b> Memungkinkan membaca data private dengan kontrol.</p>
+      <p>Sintaks 1: <code>tipeData get namaGetter => _field;</code> (Arrow)</p>
+      <p>Sintaks 2: <code>tipeData namaGetter() { return _field; }</code> (Block)</p>
+
+      <p><b>Setter:</b> Memungkinkan modifikasi data dengan validasi.</p>
+      <p>Sintaks 1: <code>set namaSetter(value) {...}</code> (Set Keyword)</p>
+      <p>Sintaks 2: <code>void namaSetter(value) {...}</code> (Method Approach)</p>
+
+      <pre>
+// Nama   : Azriel Miracle Yuandre
+// Nim    : 251410024
+// Kelas  : Si2A 
+
+class Person {
+  String _nama;
+  int umur;
+  
+  Person(this._nama, this.umur);
+  
+  set setNama(String nama) {
+    _nama = nama;
+  }
+
+  void ubahNama(String nama) {
+    _nama = nama;
+  }
+
+  String getNama() {
+    return _nama;
+  }
+}
+
+void main() {
+  Person p1 = Person("Azriel Miracle Yuandre", 20);
+  print('Umur: ${p1.umur}');
+  
+  p1.ubahNama('Miracle');
+  print('Nama (via Method): ${p1.getNama()}');
+  
+  p1.setNama = 'Azriel Miracle Yuandre';
+  print('Nama (via Setter): ${p1.getNama()}');
+}
+  </pre>
+
+      <button class="btn" onclick="openModal('3dd02b01404a0dc2e8fa0251ab10de6d')">
+        Lihat Kode
+      </button>
+    </div>
+
+    <h2>CONTOH IMPLEMENTASI GETTER & SETTER</h2>
+    <div class="card">
+      <p>
+        Meningkatkan integritas data dengan validasi nilai pada Produk sebelum disimpan:
+      </p>
+      <ul>
+        <li>Nama produk minimal 3 karakter</li>
+        <li>Harga produk harus lebih besar dari 0</li>
+      </ul>
+
+      <pre>
+// Nama   : Azriel Miracle Yuandre
+// Nim    : 251410024
+// Kelas  : Si2A
+
+class Produk {
+  String _nama;
+  double _harga;
+  
+  Produk(this._nama, this._harga);
+  
+  String get nama => _nama;
+  double get harga => _harga;
+  
+  set nama(String value) {
+    if (value.length >= 3) {
+      _nama = value;
+    } else {
+      print('Gagal memperbarui nama: Nama harus memiliki minimal 3 karakter.');
+    }
+  }
+  
+  set harga(double value) {
+    if (value > 0) {
+      _harga = value;
+    } else {
+      print('Gagal memperbarui harga: Harga harus lebih besar dari 0.');
+    }
+  }
+}
+
+void main() {
+  var p1 = Produk('Asus ROG', 3500.0);
+
+  print('--- Informasi Produk Awal ---');
+  print('Nama Produk: ${p1.nama}');
+  print('Harga Produk: Rp ${p1.harga}');
+
+  print('\n--- Memperbarui Produk ---');
+  p1.nama = 'Monitor 144hz';
+  p1.harga = 12000.0;
+  print('Nama (setelah update): ${p1.nama}');
+
+  print('\n--- Menguji Validasi Setter ---');
+  p1.nama = 'Kulkas'; // Gagal (kurang dari 3 karakter)
+  p1.harga = -1000.0; // Gagal (kurang dari 0)
+}
+  </pre>
+
+      <button class="btn" onclick="openModal('2fa7a88295c0b70c3739a64acf3e6609')">
+        Lihat Kode
+      </button>
+    </div>
+
+    <h2>Praktik Enkapsulasi - Class User</h2>
+    <div class="card">
+      <pre>
+// Nama   : Azriel Miracle Yuandre
+// Nim    : 251410024
+// Kelas  : Si2A
+
+class User {
+  String _username;
+  String _password;
+  String _email;
+
+  User(this._username, this._password, this._email);
+
+  // Getter untuk semua field
+  String get username => _username;
+  String get email => _email;
+
+  // Setter dengan validasi
+  set username(String v) {
+    if (v.length >= 5) {
+      _username = v;
+    } else {
+      print('Username minimal 7 karakter');
+    }
+  }
+
+  set password(String v) {
+    if (v.length >= 8) {
+      _password = v;
+    } else {
+      print('Password minimal 20 karakter');
+    }
+  }
+
+  set email(String v) {
+    if (v.contains('@')) {
+      _email = v;
+    } else {
+      print('Format email salah (Harus mengandung @)');
+    }
+  }
+
+  void info() => print('User: $_username, Pass: $_password, Email: $_email');
+}
+
+void main() {
+  var u1 = User('Azriel', '10001', 'admin.com');
+  u1.username = 'Azrielmy';
+  u1.password = 'thegreat1';
+  u1.email = 'Azriel@gmail.com';
+  u1.info();
+}
+  </pre>
+
+      <button class="btn" onclick="openModal('1ce7965bdae8cb30413f2126fd140bbc')">
+        Lihat Kode
+      </button>
+    </div>
+
+    <h2>Studi Kasus Sistem Login</h2>
+    <div class="card">
+      <pre>
+// Nama   : Azriel Miracle Yuandre
+// Nim    : 251410024
+// Kelas  : Si2A
+
+class User {
+  String _username;
+  String _password;
+
+  User(this._username, this._password);
+  
+  String get username => _username;
+
+  bool login(String username, String password) {
+    return _username == username && _password == password;
+  }
+
+  void gantiPassword(String lama, String baru) {
+    if (_password == lama) {
+      if (baru.length >= 8) {
+        _password = baru;
+        print('Password Anda berhasil diubah.');
+      } else {
+        print('Gagal: Password baru minimal 8 karakter.');
+      }
+    } else {
+      print('Gagal: Password lama tidak cocok.');
+    }
+  }
+}
+
+void main() {
+  print('--- MEMBUAT AKUN BARU ---');
+  final User u1 = User('super_Miracle', 'rahasia123');
+  
+  print('--- PROSES VERIFIKASI LOGIN ---');
+  if (u1.login('super_Miracle', 'rahasia123')) {
+    print('Selamat datang! Anda berhasil masuk.');
+  }
+
+  print('\n--- PERUBAHAN KATA SANDI ---');
+  u1.gantiPassword('rahasia123', 'superSecret789');
+  u1.gantiPassword('salahPass', 'cobaCoba'); // Percobaan gagal
+}
+  </pre>
+
+      <button class="btn" onclick="openModal('dcf4b00cade35460b7a7dbcea44561b3')">
+        Lihat Kode
+      </button>
+    </div>
+
+    <h2>Latihan Bank</h2>
+    <div class="card">
+      <pre>
+// Nama   : Azriel Miracle Yuandre
+// Nim    : 251410024
+// Kelas  : Si2A
+
+class RekeningBank {
+  String _nomorRekening;
+  double _saldo;
+
+  RekeningBank(this._nomorRekening, this._saldo);
+
+  void deposit(double jml) {
+    if (jml > 0) {
+      _saldo += jml;
+      print('Deposit Rp $jml Berhasil.');
+    }
+  }
+
+  void tarik(double jml) {
+    if (jml > 0 && _saldo >= jml) {
+      _saldo -= jml;
+      print('Tarik Rp $jml Berhasil.');
+    } else {
+      print('Gagal: Saldo tidak cukup atau input tidak valid.');
+    }
+  }
+
+  void cekSaldo() {
+    print('Rekening: $_nomorRekening | Saldo: Rp $_saldo');
+  }
+}
+
+void main() {
+  print('--- TRANSAKSI PERTAMA ---');
+  var rekeningSaya = RekeningBank('1234-5678-90', 5000000);
+  rekeningSaya.cekSaldo();
+  
+  print('\n--- MELAKUKAN PENARIKAN ---');
+  rekeningSaya.tarik(1000000);
+  rekeningSaya.cekSaldo();
+}
+  </pre>
+
+      <button class="btn" onclick="openModal('a9c8ab069ebb9a3ec290ddb07e3a044e')">
+        Lihat Kode
+      </button>
+    </div>
+
+    <footer>
+      <h2>Kesimpulan</h2>
+      <pre>
+<p>
+1. Dart memiliki berbagai jenis constructor untuk fleksibilitas objek.
+
+2. Enkapsulasi melindungi data dengan menggunakan private field (prefix underscore).
+
+3. Getter & setter memberikan kontrol akses yang aman terhadap data private</p>
+     </pre>
+    </footer>
+
+  </div>
+
+  <!-- MODAL DINAMIS (Cukup Satu Saja) -->
+  <div id="dynamicModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <iframe id="modalIframe" src=""></iframe>
+    </div>
+  </div>
+
+  <script>
+    function openModal(gistId) {
+      const modal = document.getElementById("dynamicModal");
+      const iframe = document.getElementById("modalIframe");
+
+      // Load link secara otomatis saat diklik
+      iframe.src = `https://dartpad.dev/embed-dart.html?id=${gistId}&null_safety=true&run=true&theme=light`;
+      modal.style.display = "block";
+      document.body.style.overflow = "hidden"; // Biar ga bisa scroll saat modal buka
+    }
+
+    function closeModal() {
+      const modal = document.getElementById("dynamicModal");
+      const iframe = document.getElementById("modalIframe");
+
+      modal.style.display = "none";
+      iframe.src = ""; // Bersihkan iframe biar ga berat
+      document.body.style.overflow = "auto";
+    }
+
+    // Klik di luar modal untuk tutup
+    window.onclick = function (event) {
+      const modal = document.getElementById("dynamicModal");
+      if (event.target == modal) closeModal();
+    }
+  </script>
+
+</body>
+
+</html>
