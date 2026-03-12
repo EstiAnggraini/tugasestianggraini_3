@@ -167,7 +167,7 @@
 
   <div class="container">
 
-    <h1>Review Sesi 1</h1>
+    <h1>Review-Sesi 1 Dart</h1>
     <p><b>Nama:</b> Esti Anggraini</p>
     <p><b>NIM:</b> 251410031</p>
     <p><b>Kelas:</b> SI2A</p>
@@ -651,9 +651,6 @@ void main() {
     <h2>Studi Kasus Sistem Login</h2>
     <div class="card">
       <pre>
-// Nama: Esti Anggraini
-// Nim: 251410031
-// Kelas: SI2A
 
 // Nama: Esti Anggraini
 // Nim: 251410031
@@ -671,7 +668,7 @@ class Pengguna {
     return _namaPengguna == namaPengguna && _kataSandi == kataSandi;
   }
 
-  void gantiKataSandi(String lama, String baru) {
+  void gantiKataSandi7(String lama, String baru) {
     if (_kataSandi == lama) {
       if (baru.length >= 8) {
         _kataSandi = baru;
@@ -683,25 +680,62 @@ class Pengguna {
       print('Gagal: Kata sandi lama tidak cocok.');
     }
   }
+  
+  void gantiKataSandi9(String lama, String baru) {
+    if (_kataSandi == lama) {
+      if (baru.length >= 8) {
+        _kataSandi = baru;
+        print('Kata sandi Anda (versi 9) berhasil diubah.');
+      } else {
+        print('Gagal: Kata sandi baru minimal 8 karakter.');
+      }
+    } else {
+      print('Gagal: Kata sandi lama tidak cocok.');
+    }
+  }
+  
+  void gantiKataSandi12(String lama, String baru) {
+    if (_kataSandi == lama) {
+      if (baru.length >= 8) {
+        _kataSandi = baru;
+        print('Kata sandi Anda (versi 12) berhasil diubah.');
+      } else {
+        print('Gagal: Kata sandi baru minimal 8 karakter.');
+      }
+    } else {
+      print('Gagal: Kata sandi lama tidak cocok.');
+    }
+  }
 }
 
 void main() {
   print('--- MEMBUAT AKUN BARU ---');
-  final Pengguna esti = Pengguna('Esti_Anggraini', 'esti12345');
+  final Pengguna estiAnggraini = Pengguna('Esti_Anggraini', 'esti12345');
   
   print('--- PROSES VERIFIKASI LOGIN ---');
-  if (esti.login('Esti_Anggraini', 'esti12345')) {
+  if (estiAnggraini.login('Esti_Anggraini', 'esti12345')) {
     print('Selamat datang, Esti Anggraini! Anda berhasil masuk.');
   }
 
-  print('\n--- PERUBAHAN KATA SANDI ---');
-  esti.gantiKataSandi('esti12345', 'anggraini789');
-  esti.gantiKataSandi('salahSandi', 'cobaCoba'); // Percobaan gagal
+  print('\n--- PERUBAHAN KATA SANDI VERSI 7 ---');
+  estiAnggraini.gantiKataSandi7('esti12345', 'anggraini7');
   
-  print('\n--- VERIFIKASI SETELAH PERUBAHAN ---');
-  if (esti.login('Esti_Anggraini', 'anggraini789')) {
-    print('Login berhasil dengan kata sandi baru.');
+  print('\n--- PERUBAHAN KATA SANDI VERSI 9 ---');
+  estiAnggraini.gantiKataSandi9('anggraini7', 'anggraini9');
+  
+  print('\n--- PERUBAHAN KATA SANDI VERSI 12 ---');
+  estiAnggraini.gantiKataSandi12('anggraini9', 'anggraini12');
+  
+  print('\n--- PERCOBAAN DENGAN SALAH KATA SANDI ---');
+  estiAnggraini.gantiKataSandi9('salahSandi', 'cobaCoba'); // Percobaan gagal
+  
+  print('\n--- VERIFIKASI SETELAH PERUBAHAN TERAKHIR ---');
+  if (estiAnggraini.login('Esti_Anggraini', 'anggraini12')) {
+    print('Login berhasil dengan kata sandi baru versi 12.');
   }
+  
+  print('\n--- DATA AKUN ---');
+  print('Nama Pengguna: ${estiAnggraini.namaPengguna}');
 }
   </pre>
 
