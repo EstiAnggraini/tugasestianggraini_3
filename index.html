@@ -499,17 +499,16 @@ class Person {
 }
 
 void main() {
-  Person p1 = Person("Esti Anggraini", 19);
-  print('Umur: ${p1.umur2}');
+  Person p3 = Person("Esti Anggraini", 19);
+  print('Umur: ${p3.umur2}');
   
-  Person p3 = Person("", 0);
   p3.ubahNama('Anggraini');
   print('Nama p3 (via Method): ${p3.getNama()}');
   
-  p1.setNama = 'Esti Anggraini';
-  print('Nama (via Setter): ${p1.getNama()}');
+  p3.setNama = 'Esti Anggraini';
+  print('Nama (via Setter): ${p3.getNama()}');
   
-  print('Nama akhir p1: ${p1.getNama()}');
+  print('Nama akhir p3: ${p3.getNama()}');
 }
   </pre>
 
