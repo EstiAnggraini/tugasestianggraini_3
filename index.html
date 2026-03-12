@@ -227,61 +227,62 @@ void main() {
 // Nama: Esti Anggraini
 // Nim: 251410031
 // Kelas: SI2A
+
 import 'dart:convert';
 
-class Mobil {
-  String? merk;
-  int? tahun;
+class Motor {
+  String? merek;
+  int? tahunProduksi;
 
   // Parameterized constructor
-  Mobil(this.merk, this.tahun);
+  Motor(this.merek, this.tahunProduksi);
 
   // Named constructor
-  Mobil.baru() {
-    merk = 'Bmw';
-    tahun = 2023;
+ Motor.standar() {
+    merek = 'Honda';
+    tahunProduksi = 2023;
   }
 
   // Named constructor dengan parameter
-  Mobil.dariJson(Map<String, dynamic> json) {
-    merk = json['merk'];
-    tahun = json['tahun'];
+  Motor.dariData(Map<String, dynamic> data) {
+    merek = data['merek'];
+    tahunProduksi = data['tahunProduksi'];
   }
 
   // Override toString for better print output
   @override
   String toString() {
-    return 'Mobil{merk: $merk, tahun: $tahun}';
+    return 'Motor{merek: $merek, tahunProduksi: $tahunProduksi}';
   }
 }
 
 void main() {
-  print('--- PRAKTIKUM KELAS MOBIL ---');
+  print('--- PRAKTIKUM KELAS MOTOR ---');
 
   // 1. Constructor default
-  var m1 = Mobil('Ferrari', 2022);
-  print('Mobil 1 (constructor default): $m1');
+  var motor1 = Motor('Yamaha', 2022);
+  print('Motor 1 (constructor default): $motor1');
 
-  // 2. Named constructor .baru
-  var m2 = Mobil.baru();
-  print('Mobil 2 (named constructor .baru): $m2');
+  // 2. Named constructor .standar
+  var motor2 = Motor.standar();
+  print('Motor 2 (named constructor .standar): $motor2');
 
-  // 3. Named constructor .dariJson
-  String dataJson = '{"merk": "Lamborghini", "tahun": 2023}';
-  Map<String, dynamic> jsonData = jsonDecode(dataJson);
-  var m3 = Mobil.dariJson(jsonData);
-  print('Mobil 3 (named constructor .dariJson): $m3');
+  // 3. Named constructor .dariData
+  String dataJsonMotor = '{"merek": "Kawasaki", "tahunProduksi": 2023}';
+  Map<String, dynamic> jsonMotor = jsonDecode(dataJsonMotor);
+  var motor3 = Motor.dariData(jsonMotor);
+  print('Motor 3 (named constructor .dariData): $motor3');
 
-  // 4. Contoh lain dengan .dariJson
-  Map<String, dynamic> dataLain = {'merk': 'Porsche', 'tahun': 2024};
-  var m4 = Mobil.dariJson(dataLain);
-  print('Mobil 4 (named constructor .dariJson): $m4');
+  // 4. Contoh lain dengan .dariData
+  Map<String, dynamic> dataMotorLain = {'merek': 'Ducati', 'tahunProduksi': 2024};
+  var motor4 = Motor.dariData(dataMotorLain);
+  print('Motor 4 (named constructor .dariData): $motor4');
 
   print('\n--- SELESAI DEMONSTRASI ---');
 }
   </pre>
 
-      <button class="btn" onclick="openModal('c94aa90f8dfbd6d807be9c2772d504d2')">
+      <button class="btn" onclick="openModal('33eff951c2b9cb89ca4d03d854e9cdc0')">
         Lihat Kode
       </button>
     </div>
@@ -298,27 +299,36 @@ void main() {
 // Nim: 251410031
 // Kelas: SI2A
 
-class Warna {
-  final int r, g, b;
-  const Warna(this.r, this.g, this.b);
+class WarnaCat {
+  final int red, green, blue;
+  const WarnaCat(this.red, this.green, this.blue);
 
   @override
   String toString() {
-    return 'Warna(r: $r, g: $g, b: $b)';
+    return 'WarnaCat(red: $red, green: $green, blue: $blue)';
   }
 }
 
 void main() {
-  const scarlet = Warna(255, 0, 0);
-  const scarletLagi = Warna(254, 0, 0); 
+  const merahBata = WarnaCat(180, 60, 60);
+  const merahMuda = WarnaCat(255, 180, 180); 
 
-  print(scarlet);
-  print(scarletLagi); 
-  print('Apakah instance sama? ${identical(scarlet, scarletLagi)}'); 
+  print(merahBata);
+  print(merahMuda); 
+  print('Apakah objek sama? ${identical(merahBata, merahMuda)}'); 
+  
+  // Contoh tambahan untuk menunjukkan konsep canonical instance
+  const biruLangit = WarnaCat(135, 206, 235);
+  const biruLangitLagi = WarnaCat(135, 206, 235);
+  
+  print('\n--- Demonstrasi Canonical Instance ---');
+  print(biruLangit);
+  print(biruLangitLagi);
+  print('Apakah biruLangit dan biruLangitLagi instance sama? ${identical(biruLangit, biruLangitLagi)}');
 }
   </pre>
 
-      <button class="btn" onclick="openModal('d4d3e01d810cb35552170bf7317bd3ee')">
+      <button class="btn" onclick="openModal('7b71a67d4be1fcf0bd5453b56abecd94')">
         Lihat Kode
       </button>
     </div>
@@ -335,32 +345,34 @@ void main() {
 // Nim: 251410031
 // Kelas: SI2A
 
-class Titik {
-  final double x, y;
+class Koordinat {
+  final double sumbuX, sumbuY;
 
-  Titik(double x, double y)
-    : x = x.abs(),
-      y = y.abs() {
-    print('Titik dibuat di (${this.x}, ${this.y})');
+  Koordinat(double sumbuX, double sumbuY)
+    : sumbuX = sumbuX.abs(),
+      sumbuY = sumbuY.abs() {
+    print('Koordinat dibuat di ($sumbuX, $sumbuY)');
   }
 }
 
 void main(){
-  print('Membuat objek Titik pertama:');
-  var t1 = Titik(7.5, 2.0); 
-  print('Titik 1: x = ${t1.x}, y = ${t1.y}');
+  print('Membuat objek Koordinat pertama:');
+  var k1 = Koordinat(7.5, 2.0); 
+  print('Koordinat 1: sumbuX = ${k1.sumbuX}, sumbuY = ${k1.sumbuY}');
 
-  print('\nMembuat objek Titik kedua dengan nilai negatif:');
-  var t2 = Titik(-8.0, 3.5); 
-  print('Titik 2: x = ${t2.x}, y = ${t2.y}');
+  print('\nMembuat objek Koordinat kedua dengan nilai negatif:');
+  var k2 = Koordinat(-8.0, 3.5); 
+  print('Koordinat 2: sumbuX = ${k2.sumbuX}, sumbuY = ${k2.sumbuY}');
 
-  print('\nMembuat objek Titik ketiga dengan nilai negatif di kedua koordinat:');
-  var t3 = Titik(-2.0, -4.0); 
-  print('Titik 3: x = ${t3.x}, y = ${t3.y}');
+  print('\nMembuat objek Koordinat ketiga dengan nilai negatif di kedua sumbu:');
+  var k3 = Koordinat(-2.0, -4.0); 
+  print('Koordinat 3: sumbuX = ${k3.sumbuX}, sumbuY = ${k3.sumbuY}');
+  
+  print('\n--- Catatan: Semua nilai negatif otomatis diubah menjadi positif ---');
 }
   </pre>
 
-      <button class="btn" onclick="openModal('fab6c5b75398c9d1315b8877725646cb')">
+      <button class="btn" onclick="openModal('d94a4da0906f2a2134f0553d98b1f7bb')">
         Lihat Kode
       </button>
     </div>
@@ -389,25 +401,25 @@ class Mahasiswa {
   }
 
   Mahasiswa.tanpaNama() {
-    nama = 'No Namenor';
-    nim = '000001';
+    nama = 'No Name100';
+    nim = '0000100';
   }
 
   void info() => print('Mahasiswa: $nama, NIM: $nim');
 }
 
 void main() {
-  var m1 = Mahasiswa('Azriel', '251410024'); 
-  var m2 = Mahasiswa.dariMap({'nama': 'Miracle', 'nim': '251410010'}); 
-  var m3 = Mahasiswa.tanpaNama(); 
+  var mx = Mahasiswa('Esti', '251410031'); 
+  var mz = Mahasiswa.dariMap({'nama': 'Anggraini', 'nim': '251410090'}); 
+  var my = Mahasiswa.tanpaNama(); 
 
-  m1.info(); 
-  m2.info(); 
-  m3.info(); 
+  mx.info(); 
+  mz.info(); 
+  my.info(); 
 }
   </pre>
 
-      <button class="btn" onclick="openModal('62dba7174bae5127cc47547a6984032c')">
+      <button class="btn" onclick="openModal('6ce910adc3797194faf0de7d34d363e5')">
         Lihat Kode
       </button>
     </div>
@@ -433,20 +445,20 @@ void main() {
 
 class Person {
   String _nama; 
-  int umur;      
+  int _umur;      
 
-  Person(this._nama, this.umur); 
+  Person(this._nama, this._umur); 
 
-  void info() => print('Nama: $_nama, Umur: $umur'); 
+  void info() => print('Nama: $_nama, Umur: $_umur'); 
 }
 
 void main() {
-  var p1 = Person('Azriel Miracle Yuandre', 20); 
-  p1.info(); 
+  var player = Person('Esti Anggraini', 19); 
+  player.info(); 
 }
   </pre>
 
-      <button class="btn" onclick="openModal('46fa1b5e7e941dcc6a3917bb923ea8bb')">
+      <button class="btn" onclick="openModal('46b319d10fa66c85aa845d54dcba2ba7')">
         Lihat Kode
       </button>
     </div>
@@ -468,37 +480,40 @@ void main() {
 // Kelas: SI2A 
 
 class Person {
-  String _nama;
-  int umur;
+  String _nama1;
+  int umur2;
   
-  Person(this._nama, this.umur);
+  Person(this._nama1, this.umur2);
   
   set setNama(String nama) {
-    _nama = nama;
+    _nama1 = nama;
   }
 
   void ubahNama(String nama) {
-    _nama = nama;
+    _nama1 = nama;
   }
 
   String getNama() {
-    return _nama;
+    return _nama1;
   }
 }
 
 void main() {
-  Person p1 = Person("Azriel Miracle Yuandre", 20);
-  print('Umur: ${p1.umur}');
+  Person p1 = Person("Esti Anggraini", 19);
+  print('Umur: ${p1.umur2}');
   
-  p1.ubahNama('Miracle');
-  print('Nama (via Method): ${p1.getNama()}');
+  Person p3 = Person("", 0);
+  p3.ubahNama('Anggraini');
+  print('Nama p3 (via Method): ${p3.getNama()}');
   
-  p1.setNama = 'Azriel Miracle Yuandre';
+  p1.setNama = 'Esti Miracle';
   print('Nama (via Setter): ${p1.getNama()}');
+  
+  print('Nama akhir p1: ${p1.getNama()}');
 }
   </pre>
 
-      <button class="btn" onclick="openModal('3dd02b01404a0dc2e8fa0251ab10de6d')">
+      <button class="btn" onclick="openModal('7a08af8f8344b08a014650263fbbcca6')">
         Lihat Kode
       </button>
     </div>
@@ -545,24 +560,24 @@ class Produk {
 }
 
 void main() {
-  var p1 = Produk('Asus ROG', 3500.0);
+  var px = Produk('Asus SmartPanel', 3500.0);
 
   print('--- Informasi Produk Awal ---');
-  print('Nama Produk: ${p1.nama}');
-  print('Harga Produk: Rp ${p1.harga}');
+  print('Nama Produk: ${px.nama}');
+  print('Harga Produk: Rp ${px.harga}');
 
   print('\n--- Memperbarui Produk ---');
-  p1.nama = 'Monitor 144hz';
-  p1.harga = 12000.0;
-  print('Nama (setelah update): ${p1.nama}');
+  px.nama = 'Sonar Panel';
+  px.harga = 12000.00;
+  print('Nama (setelah update): ${px.nama}');
 
   print('\n--- Menguji Validasi Setter ---');
-  p1.nama = 'Kulkas'; // Gagal (kurang dari 3 karakter)
-  p1.harga = -1000.0; // Gagal (kurang dari 0)
+  px.nama = 'Termometer'; // Gagal (kurang dari 11 karakter)
+  px.harga = -1000.02; // Gagal (kurang dari 0)
 }
   </pre>
 
-      <button class="btn" onclick="openModal('2fa7a88295c0b70c3739a64acf3e6609')">
+      <button class="btn" onclick="openModal('36d50a6b8a921dce08d680ef8dd117a7')">
         Lihat Kode
       </button>
     </div>
@@ -574,55 +589,61 @@ void main() {
 // Nim: 251410031
 // Kelas: SI2A
 
-class User {
-  String _username;
-  String _password;
-  String _email;
+class Pengguna {
+  String _namaPengguna;
+  String _kataSandi;
+  String _surel;
 
-  User(this._username, this._password, this._email);
+  Pengguna(this._namaPengguna, this._kataSandi, this._surel);
 
   // Getter untuk semua field
-  String get username => _username;
-  String get email => _email;
+  String get namaPengguna => _namaPengguna;
+  String get surel => _surel;
 
   // Setter dengan validasi
-  set username(String v) {
+  set namaPengguna(String v) {
     if (v.length >= 5) {
-      _username = v;
+      _namaPengguna = v;
     } else {
-      print('Username minimal 7 karakter');
+      print('Nama pengguna minimal 5 karakter');
     }
   }
 
-  set password(String v) {
+  set kataSandi(String v) {
     if (v.length >= 8) {
-      _password = v;
+      _kataSandi = v;
     } else {
-      print('Password minimal 20 karakter');
+      print('Kata sandi minimal 8 karakter');
     }
   }
 
-  set email(String v) {
+  set surel(String v) {
     if (v.contains('@')) {
-      _email = v;
+      _surel = v;
     } else {
-      print('Format email salah (Harus mengandung @)');
+      print('Format surel salah (Harus mengandung @)');
     }
   }
 
-  void info() => print('User: $_username, Pass: $_password, Email: $_email');
+  void info() => print('Pengguna: $_namaPengguna, Sandi: $_kataSandi, Surel: $_surel');
 }
 
 void main() {
-  var u1 = User('Azriel', '10001', 'admin.com');
-  u1.username = 'Azrielmy';
-  u1.password = 'thegreat1';
-  u1.email = 'Azriel@gmail.com';
-  u1.info();
+  var esti = Pengguna('Esti', '12345', 'esti.com');
+  esti.namaPengguna = 'EstiAnggraini';
+  esti.kataSandi = 'estianggraini1';
+  esti.surel = 'esti.anggraini@gmail.com';
+  esti.info();
+  
+  var anggraini = Pengguna('Anggraini', '67890', 'anggraini.com');
+  anggraini.namaPengguna = 'AnggrainiEsti';
+  anggraini.kataSandi = 'anggrainiesti2';
+  anggraini.surel = 'anggraini.esti@gmail.com';
+  anggraini.info();
 }
   </pre>
 
-      <button class="btn" onclick="openModal('1ce7965bdae8cb30413f2126fd140bbc')">
+      <button class="btn" onclick="openModal('73453d5091698db289c8b49867580f64')">
         Lihat Kode
       </button>
     </div>
@@ -634,48 +655,57 @@ void main() {
 // Nim: 251410031
 // Kelas: SI2A
 
-class User {
-  String _username;
-  String _password;
+// Nama: Esti Anggraini
+// Nim: 251410031
+// Kelas: SI2A
 
-  User(this._username, this._password);
+class Pengguna {
+  String _namaPengguna;
+  String _kataSandi;
+
+  Pengguna(this._namaPengguna, this._kataSandi);
   
-  String get username => _username;
+  String get namaPengguna => _namaPengguna;
 
-  bool login(String username, String password) {
-    return _username == username && _password == password;
+  bool login(String namaPengguna, String kataSandi) {
+    return _namaPengguna == namaPengguna && _kataSandi == kataSandi;
   }
 
-  void gantiPassword(String lama, String baru) {
-    if (_password == lama) {
+  void gantiKataSandi(String lama, String baru) {
+    if (_kataSandi == lama) {
       if (baru.length >= 8) {
-        _password = baru;
-        print('Password Anda berhasil diubah.');
+        _kataSandi = baru;
+        print('Kata sandi Anda berhasil diubah.');
       } else {
-        print('Gagal: Password baru minimal 8 karakter.');
+        print('Gagal: Kata sandi baru minimal 8 karakter.');
       }
     } else {
-      print('Gagal: Password lama tidak cocok.');
+      print('Gagal: Kata sandi lama tidak cocok.');
     }
   }
 }
 
 void main() {
   print('--- MEMBUAT AKUN BARU ---');
-  final User u1 = User('super_Miracle', 'rahasia123');
+  final Pengguna esti = Pengguna('Esti_Anggraini', 'esti12345');
   
   print('--- PROSES VERIFIKASI LOGIN ---');
-  if (u1.login('super_Miracle', 'rahasia123')) {
-    print('Selamat datang! Anda berhasil masuk.');
+  if (esti.login('Esti_Anggraini', 'esti12345')) {
+    print('Selamat datang, Esti Anggraini! Anda berhasil masuk.');
   }
 
   print('\n--- PERUBAHAN KATA SANDI ---');
-  u1.gantiPassword('rahasia123', 'superSecret789');
-  u1.gantiPassword('salahPass', 'cobaCoba'); // Percobaan gagal
+  esti.gantiKataSandi('esti12345', 'anggraini789');
+  esti.gantiKataSandi('salahSandi', 'cobaCoba'); // Percobaan gagal
+  
+  print('\n--- VERIFIKASI SETELAH PERUBAHAN ---');
+  if (esti.login('Esti_Anggraini', 'anggraini789')) {
+    print('Login berhasil dengan kata sandi baru.');
+  }
 }
   </pre>
 
-      <button class="btn" onclick="openModal('dcf4b00cade35460b7a7dbcea44561b3')">
+      <button class="btn" onclick="openModal('d77fdf9899c13c340957e617971413ce')">
         Lihat Kode
       </button>
     </div>
@@ -716,16 +746,32 @@ class RekeningBank {
 
 void main() {
   print('--- TRANSAKSI PERTAMA ---');
-  var rekeningSaya = RekeningBank('1234-5678-90', 5000000);
-  rekeningSaya.cekSaldo();
+  var rekeningEsti = RekeningBank('2514-1003-10', 7500000);
+  rekeningEsti.cekSaldo();
+  
+  print('\n--- MELAKUKAN PENYETORAN ---');
+  rekeningEsti.deposit(2500000);
+  rekeningEsti.cekSaldo();
   
   print('\n--- MELAKUKAN PENARIKAN ---');
-  rekeningSaya.tarik(1000000);
-  rekeningSaya.cekSaldo();
+  rekeningEsti.tarik(1000000);
+  rekeningEsti.cekSaldo();
+  
+  print('\n--- TRANSAKSI KEDUA ---');
+  var rekeningAnggraini = RekeningBank('2514-1003-31', 10000000);
+  rekeningAnggraini.cekSaldo();
+  
+  print('\n--- MELAKUKAN PENARIKAN ---');
+  rekeningAnggraini.tarik(5000000);
+  rekeningAnggraini.cekSaldo();
+  
+  print('\n--- PERCOBAAN PENARIKAN GAGAL ---');
+  rekeningAnggraini.tarik(20000000);
+  rekeningAnggraini.cekSaldo();
 }
   </pre>
 
-      <button class="btn" onclick="openModal('a9c8ab069ebb9a3ec290ddb07e3a044e')">
+      <button class="btn" onclick="openModal('6432d36e5e82f0f8cb1f55ac22fbe63f')">
         Lihat Kode
       </button>
     </div>
